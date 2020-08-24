@@ -1,12 +1,12 @@
-src=$(wildcard,*.c)
-target=$(patsubst ./%.c,./%,$(src))
+src=$(wildcard,%.cpp)
+target=$(patsubst ./%.cpp,./%.exe,$(src))
 
 ALL:$(target)
 
-%:%.c
-	gcc $< -o $@
+%.exe:%.cpp
+	g++ $< -o $@
 
 clean:
-	-rm -rf $(target)
+	-rm -rf $(target) 
 
 .PHONY: clean ALL
